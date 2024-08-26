@@ -12,10 +12,6 @@ export class TaskType {
 	@Field(() => Priority) priority: Priority
 
 	@Field() isCompleted: boolean
-
-	@Field({ nullable: true }) estimatedTime?: number
-
-	@Field({ nullable: true }) spentTime?: number
 }
 
 registerEnumType(Priority, {

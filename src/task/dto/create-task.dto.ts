@@ -4,7 +4,6 @@ import {
 	IsBoolean,
 	IsEnum,
 	IsNotEmpty,
-	IsNumber,
 	IsOptional,
 	IsString
 } from 'class-validator'
@@ -20,16 +19,6 @@ export class CreateTaskDto {
 	@IsOptional()
 	@IsEnum(Priority)
 	priority?: Priority
-
-	@Field({ nullable: true })
-	@IsOptional()
-	@IsNumber()
-	estimatedTime?: number
-
-	@Field({ nullable: true })
-	@IsOptional()
-	@IsNumber()
-	spentTime?: number
 
 	@Field({ nullable: true })
 	@IsOptional()

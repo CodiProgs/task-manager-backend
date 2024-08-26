@@ -21,11 +21,9 @@ input CreatePomodoroDto {
 
 input CreateTaskDto {
   createdAt: String
-  estimatedTime: Float
   isCompleted: Boolean
   name: String!
   priority: Priority
-  spentTime: Float
 }
 
 """
@@ -118,12 +116,10 @@ enum StatusPomodoro {
 
 type TaskType {
   createdAt: DateTime!
-  estimatedTime: Float
   id: String!
   isCompleted: Boolean!
   name: String!
   priority: Priority!
-  spentTime: Float
 }
 
 input TimeBlockDto {
@@ -156,11 +152,9 @@ input UpdatePomodoroDto {
 
 input UpdateTaskDto {
   createdAt: String
-  estimatedTime: Float
   isCompleted: Boolean
   name: String
   priority: Priority
-  spentTime: Float
 }
 
 input UserDto {

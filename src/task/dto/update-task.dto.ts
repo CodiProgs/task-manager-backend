@@ -1,12 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql'
 import { Priority } from '@prisma/client'
-import {
-	IsBoolean,
-	IsEnum,
-	IsNumber,
-	IsOptional,
-	IsString
-} from 'class-validator'
+import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator'
 
 @InputType()
 export class UpdateTaskDto {
@@ -19,16 +13,6 @@ export class UpdateTaskDto {
 	@IsOptional()
 	@IsEnum(Priority)
 	priority?: Priority
-
-	@Field({ nullable: true })
-	@IsOptional()
-	@IsNumber()
-	estimatedTime?: number
-
-	@Field({ nullable: true })
-	@IsOptional()
-	@IsNumber()
-	spentTime?: number
 
 	@Field({ nullable: true })
 	@IsOptional()
