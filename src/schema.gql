@@ -1,0 +1,179 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input AuthDto {
+  email: String!
+  password: String!
+}
+
+type AuthType {
+  accessToken: String!
+  user: UserType!
+}
+
+input CreatePomodoroDto {
+  remainingSeconds: Float!
+  status: StatusPomodoro!
+  totalSeconds: Float
+  type: TypePomodoro!
+}
+
+input CreateTaskDto {
+  createdAt: String
+  estimatedTime: Float
+  isCompleted: Boolean
+  name: String!
+  priority: Priority
+  spentTime: Float
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  auth(authInput: AuthDto!): AuthType!
+  createPomodoro(createPomodoroInput: CreatePomodoroDto!): PomodoroType!
+  createTask(createTaskInput: CreateTaskDto!): TaskType!
+  createTimeBlock(createTimeBlockInput: TimeBlockDto!): TimeBlockType!
+  deletePomodoro(id: String!): PomodoroType!
+  deleteTask(id: String!): TaskType!
+  deleteTimeBlock(id: String!): TimeBlockType!
+  getNewTokens: String!
+  logout: Boolean!
+  updatePomodoro(id: String!, updatePomodoroInput: UpdatePomodoroDto!): PomodoroType!
+  updatePomodoroSettings(updatePomodoroSettingsInput: PomodoroSettingsDto!): PomodoroSettingsType!
+  updateProfile(updateUserInput: UserDto!): UserType!
+  updateTask(id: String!, updateTaskInput: UpdateTaskDto!): TaskType!
+  updateTimeBlock(updateTimeBlockInput: TimeBlockDto!): TimeBlockType!
+  updateTimeBlockOrders(ids: [String!]!): [TimeBlockType!]!
+}
+
+input PomodoroSettingsDto {
+  breakInterval: Float!
+  longBreakAfter: Float!
+  longBreakInterval: Float!
+  retentionPeriod: Float!
+  workInterval: Float!
+}
+
+type PomodoroSettingsType {
+  breakInterval: Float!
+  id: String!
+  longBreakAfter: Float!
+  longBreakInterval: Float!
+  retentionPeriod: Float!
+  workInterval: Float!
+}
+
+type PomodoroStatisticsType {
+  count: Float!
+  date: String!
+  minutes: Float!
+}
+
+type PomodoroType {
+  createdAt: DateTime!
+  id: String!
+  remainingSeconds: Float!
+  status: StatusPomodoro!
+  totalSeconds: Float!
+  type: TypePomodoro!
+}
+
+enum Priority {
+  PRIORITY_1
+  PRIORITY_2
+  PRIORITY_3
+  PRIORITY_4
+}
+
+type Query {
+  getPomodoroStatistics(days: Float): [PomodoroStatisticsType!]!
+  getTodaySessions: [PomodoroType!]!
+  profile: UserType!
+  statistics: StatisticsType!
+  tasks: [TaskType!]!
+  timeBlocks: [TimeBlockType!]!
+}
+
+type Statistic {
+  label: String!
+  value: Float!
+}
+
+type StatisticsType {
+  statistics: [Statistic!]!
+  user: UserType!
+}
+
+enum StatusPomodoro {
+  COMPLETED
+  IN_PROGRESS
+  PAUSED
+  SKIPPED
+}
+
+type TaskType {
+  createdAt: DateTime!
+  estimatedTime: Float
+  id: String!
+  isCompleted: Boolean!
+  name: String!
+  priority: Priority!
+  spentTime: Float
+}
+
+input TimeBlockDto {
+  color: String!
+  duration: Float!
+  id: String
+  name: String!
+  order: Float!
+}
+
+type TimeBlockType {
+  color: String!
+  duration: Float!
+  id: String!
+  name: String!
+  order: Float!
+}
+
+enum TypePomodoro {
+  BREAK
+  LONG_BREAK
+  WORK
+}
+
+input UpdatePomodoroDto {
+  remainingSeconds: Float!
+  status: StatusPomodoro!
+  type: TypePomodoro!
+}
+
+input UpdateTaskDto {
+  createdAt: String
+  estimatedTime: Float
+  isCompleted: Boolean
+  name: String
+  priority: Priority
+  spentTime: Float
+}
+
+input UserDto {
+  email: String!
+  name: String!
+}
+
+type UserType {
+  email: String!
+  id: String!
+  name: String
+  pomodoroSettings: PomodoroSettingsType!
+  pomodoros: [PomodoroType!]!
+  tasks: [TaskType!]!
+  timeBlocks: [TimeBlockType!]!
+}
